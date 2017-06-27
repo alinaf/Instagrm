@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,22 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func signUp(_ sender: Any) {
+        let newUser = PFUser()
+        
+        newUser.username = usernameField.text
+        newUser.password = passwordField.text
+        newUser.email = emailField.text
+        
+        newUser.signUpInBackground { (success: Bool, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("newUser created")
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

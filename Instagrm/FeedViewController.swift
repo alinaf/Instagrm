@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import Parse
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var feedTable: UITableView!
+    
+    var posts: [[String : Any]] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        feedTable.delegate = self
+        feedTable.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +28,32 @@ class FeedViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func logOut(_ sender: Any) {
+        // log out the user
+        PFUser.logOutInBackground { (error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("successfully logged out")
+                self.performSegue(withIdentifier: "logOut", sender: sender)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count * 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let image = feedTable.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
+        
+        return image
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//    }
     
 
     /*

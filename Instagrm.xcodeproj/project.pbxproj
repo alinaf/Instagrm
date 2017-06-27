@@ -11,12 +11,13 @@
 		88C2A8A9247FBBBC1A3B7579 /* Pods_InstagrmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFCAB44E5478FF805EAAC55 /* Pods_InstagrmUITests.framework */; };
 		A9060B65D93D812A8E25925E /* Pods_Instagrm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2732713546BEF9083D6D92 /* Pods_Instagrm.framework */; };
 		FAE9287A1F01BF5E00FD0933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928791F01BF5E00FD0933 /* AppDelegate.swift */; };
-		FAE9287C1F01BF5E00FD0933 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9287B1F01BF5E00FD0933 /* ViewController.swift */; };
+		FAE9287C1F01BF5E00FD0933 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9287B1F01BF5E00FD0933 /* LoginViewController.swift */; };
 		FAE9287F1F01BF5E00FD0933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE9287D1F01BF5E00FD0933 /* Main.storyboard */; };
 		FAE928811F01BF5E00FD0933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE928801F01BF5E00FD0933 /* Assets.xcassets */; };
 		FAE928841F01BF5E00FD0933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */; };
 		FAE9288F1F01BF5E00FD0933 /* InstagrmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9288E1F01BF5E00FD0933 /* InstagrmTests.swift */; };
 		FAE9289A1F01BF5E00FD0933 /* InstagrmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928991F01BF5E00FD0933 /* InstagrmUITests.swift */; };
+		FAE928A81F02FD4A00FD0933 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,7 @@
 		E838106D6E05D841B88CD1F9 /* Pods-Instagrm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagrm.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagrm/Pods-Instagrm.release.xcconfig"; sourceTree = "<group>"; };
 		FAE928761F01BF5E00FD0933 /* Instagrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE928791F01BF5E00FD0933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FAE9287B1F01BF5E00FD0933 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAE9287B1F01BF5E00FD0933 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FAE9287E1F01BF5E00FD0933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAE928801F01BF5E00FD0933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAE928831F01BF5E00FD0933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		FAE928951F01BF5E00FD0933 /* InstagrmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagrmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE928991F01BF5E00FD0933 /* InstagrmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagrmUITests.swift; sourceTree = "<group>"; };
 		FAE9289B1F01BF5E00FD0933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				FAE928791F01BF5E00FD0933 /* AppDelegate.swift */,
-				FAE9287B1F01BF5E00FD0933 /* ViewController.swift */,
+				FAE9287B1F01BF5E00FD0933 /* LoginViewController.swift */,
+				FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */,
 				FAE9287D1F01BF5E00FD0933 /* Main.storyboard */,
 				FAE928801F01BF5E00FD0933 /* Assets.xcassets */,
 				FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */,
@@ -449,7 +452,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE9287C1F01BF5E00FD0933 /* ViewController.swift in Sources */,
+				FAE928A81F02FD4A00FD0933 /* SignUpViewController.swift in Sources */,
+				FAE9287C1F01BF5E00FD0933 /* LoginViewController.swift in Sources */,
 				FAE9287A1F01BF5E00FD0933 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,6 +713,7 @@
 				FAE928A01F01BF5E00FD0933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAE928A11F01BF5E00FD0933 /* Build configuration list for PBXNativeTarget "InstagrmTests" */ = {
 			isa = XCConfigurationList;
@@ -717,6 +722,7 @@
 				FAE928A31F01BF5E00FD0933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAE928A41F01BF5E00FD0933 /* Build configuration list for PBXNativeTarget "InstagrmUITests" */ = {
 			isa = XCConfigurationList;
@@ -725,6 +731,7 @@
 				FAE928A61F01BF5E00FD0933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -38,7 +38,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         // Do any additional setup after loading the view.
     }
-    
+        
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // get the image captured from the camera
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -50,6 +50,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dismiss the UIImagePickerController
         dismiss(animated: true, completion: nil)
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,9 +63,11 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let post = PFObject(className: "Posts")
         
         // create the adjectives for the object
-        post["image"] = postImage.image
+        post["image"] = getPFFileFromImage(image: postImage.image)
         post["caption"] = postCaption.text ?? ""
-        post["user"] = PFUser.current()
+        post["author"] = PFUser.current()
+        post["likes"] = 0
+        post["commentCount"] = 0
         
         // save the post to the database
         post.saveInBackground { (success: Bool, error: Error?) in
@@ -76,6 +80,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         
+    }
+    
+    func getPFFileFromImage (image: UIImage?) ->PFFile? {
+        // get the correct kind of data from a UI image to store for Parse
+        if let image = image {
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
     }
 
     @IBAction func cancelPost(_ sender: Any) {

@@ -152,11 +152,22 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // dequeue the header to be able to reuse it for whichever the seciton is
         let cell = self.feedTable.dequeueReusableHeaderFooterView(withIdentifier: "UserSectionHeader") as! UserSectionHeader
         
-        // set the username and the profile picture within the section header
+        // get the correct post for the section and set the time posted
         let post = posts[section]
+        let time = post.createdAt
+        // make a formatter for a way to display the date of the post
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        let display = formatter.string(from: time!)
+        cell.createdLabel.text = display
+        
+//        for time interval calculation
+//        let now = Date()
+//        let interval = DateInterval(start: time!, end: now)
+        
+        // get the user from the post and set the username and profile picture
         let user = post["author"] as! PFUser
         let username = user.username
-        
         cell.userLabel.text = username
         
         return cell

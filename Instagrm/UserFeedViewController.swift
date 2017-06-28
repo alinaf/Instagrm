@@ -24,7 +24,7 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         userFeed.delegate = self
         userFeed.dataSource = self
 
-        // Do any additional setup after loading the view.
+        getPosts()
     }
 
     func getPosts() {

@@ -463,11 +463,11 @@
             </objects>
             <point key="canvasLocation" x="83" y="822"/>
         </scene>
-        <!--Item-->
+        <!--User Posts-->
         <scene sceneID="L3Z-BV-eso">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="icm-3E-dyc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xW0-6S-uHI"/>
+                    <tabBarItem key="tabBarItem" title="User Posts" selectedImage="profile_tab" id="xW0-6S-uHI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="akp-VK-cr8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -485,6 +485,7 @@
     </scenes>
     <resources>
         <image name="feed_tab" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Lb8-JU-mOH"/>

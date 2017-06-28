@@ -63,8 +63,8 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
             let name = profile?.username
             user.userLabel.text = name
             
-            let propic = profile?["profile_pic"] as! PFFile
-            propic.getDataInBackground { (data, error) in
+            let propic = profile?["profile_pic"] as? PFFile
+            propic?.getDataInBackground { (data, error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {

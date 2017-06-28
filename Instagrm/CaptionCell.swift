@@ -10,6 +10,7 @@ import UIKit
 
 class CaptionCell: UITableViewCell {
 
+    // outlets for the table cell
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!

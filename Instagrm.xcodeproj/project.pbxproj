@@ -25,6 +25,9 @@
 		FAE928B61F032B4A00FD0933 /* UserSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */; };
 		FAE928B81F04470800FD0933 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B71F04470800FD0933 /* DetailViewController.swift */; };
 		FAE928BA1F04550900FD0933 /* CaptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B91F04550900FD0933 /* CaptionCell.swift */; };
+		FAE928BC1F0460C700FD0933 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BB1F0460C700FD0933 /* PictureCell.swift */; };
+		FAE928BE1F0460E100FD0933 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BD1F0460E100FD0933 /* UserCell.swift */; };
+		FAE928C01F04611900FD0933 /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSectionHeader.swift; sourceTree = "<group>"; };
 		FAE928B71F04470800FD0933 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FAE928B91F04550900FD0933 /* CaptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionCell.swift; sourceTree = "<group>"; };
+		FAE928BB1F0460C700FD0933 /* PictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
+		FAE928BD1F0460E100FD0933 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,9 @@
 				FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */,
 				FAE928B11F030FB300FD0933 /* PostViewController.swift */,
 				FAE928B71F04470800FD0933 /* DetailViewController.swift */,
+				FAE928BB1F0460C700FD0933 /* PictureCell.swift */,
+				FAE928BD1F0460E100FD0933 /* UserCell.swift */,
+				FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */,
 				FAE9287D1F01BF5E00FD0933 /* Main.storyboard */,
 				FAE928801F01BF5E00FD0933 /* Assets.xcassets */,
 				FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */,
@@ -475,13 +484,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE928A81F02FD4A00FD0933 /* SignUpViewController.swift in Sources */,
+				FAE928C01F04611900FD0933 /* UserFeedViewController.swift in Sources */,
 				FAE928B61F032B4A00FD0933 /* UserSectionHeader.swift in Sources */,
+				FAE928BC1F0460C700FD0933 /* PictureCell.swift in Sources */,
 				FAE9287C1F01BF5E00FD0933 /* LoginViewController.swift in Sources */,
 				FAE928BA1F04550900FD0933 /* CaptionCell.swift in Sources */,
 				FAE928B21F030FB300FD0933 /* PostViewController.swift in Sources */,
 				FAE928AA1F03066D00FD0933 /* FeedViewController.swift in Sources */,
 				FAE9287A1F01BF5E00FD0933 /* AppDelegate.swift in Sources */,
 				FAE928AC1F03082800FD0933 /* ImageCell.swift in Sources */,
+				FAE928BE1F0460E100FD0933 /* UserCell.swift in Sources */,
 				FAE928B81F04470800FD0933 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

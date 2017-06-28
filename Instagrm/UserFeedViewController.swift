@@ -28,8 +28,22 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     func getPosts() {
-        let query = PFQuery()
+        // make query to the database for a certain user. must be sorted by most recent and have a limit
+        let query = PFQuery(className: "Posts")
+        query.limit = 20
+        query.order(byDescending: "_created_at")
+        query.whereKey("author", equalTo: PFUser.current()!)
         
+        // find the objects in the table
+        query.findObjectsInBackground { (objects: [PFObject]?, error) in
+            if let objects = objects {
+                // set the posts for the collection
+                self.posts = objects
+                
+                // reload the collection view
+                self.userFeed.reloadData()
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

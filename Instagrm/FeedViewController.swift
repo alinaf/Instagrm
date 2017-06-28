@@ -125,7 +125,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let image = feedTable.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
         
         if !posts.isEmpty {
-            let post = posts[indexPath.row]
+            let post = posts[indexPath.section]
             let load = post["image"] as! PFFile
             load.getDataInBackground(block: { (data: Data?, error: Error?) in
                 if let error = error {

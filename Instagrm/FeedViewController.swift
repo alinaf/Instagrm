@@ -11,6 +11,7 @@ import Parse
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // Outlets for the view
     @IBOutlet weak var feedTable: UITableView!
     
     // storage for posts in the feed
@@ -110,6 +111,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }
@@ -165,15 +167,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // get the destination and cell to access their member variables/functions
+        let cell = sender as! UITableViewCell
+        let control = segue.destination as! DetailViewController
+        let index = feedTable.indexPath(for: cell)
+        
+        // get the correct post to give to the detail view
+        let post = self.posts[index!.row]
+        
+        // set the post in the detail view to whatever was selected
+        control.post = post
+        
     }
-    */
 
 }

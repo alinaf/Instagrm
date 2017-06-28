@@ -23,6 +23,7 @@
 		FAE928B21F030FB300FD0933 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B11F030FB300FD0933 /* PostViewController.swift */; };
 		FAE928B41F032AC100FD0933 /* UserSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */; };
 		FAE928B61F032B4A00FD0933 /* UserSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */; };
+		FAE928B81F04470800FD0933 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B71F04470800FD0933 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		FAE928B11F030FB300FD0933 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSectionHeader.xib; sourceTree = "<group>"; };
 		FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSectionHeader.swift; sourceTree = "<group>"; };
+		FAE928B71F04470800FD0933 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */,
 				FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */,
 				FAE928B11F030FB300FD0933 /* PostViewController.swift */,
+				FAE928B71F04470800FD0933 /* DetailViewController.swift */,
 				FAE9287D1F01BF5E00FD0933 /* Main.storyboard */,
 				FAE928801F01BF5E00FD0933 /* Assets.xcassets */,
 				FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */,
@@ -475,6 +478,7 @@
 				FAE928AA1F03066D00FD0933 /* FeedViewController.swift in Sources */,
 				FAE9287A1F01BF5E00FD0933 /* AppDelegate.swift in Sources */,
 				FAE928AC1F03082800FD0933 /* ImageCell.swift in Sources */,
+				FAE928B81F04470800FD0933 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

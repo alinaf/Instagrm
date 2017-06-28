@@ -33,6 +33,9 @@ class SignUpViewController: UIViewController {
         newUser.username = usernameField.text
         newUser.password = passwordField.text
         newUser.email = emailField.text
+        newUser["profile_pic"] = nil
+        newUser["followers"] = 0
+        newUser["description"] = ""
         
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if let error = error {

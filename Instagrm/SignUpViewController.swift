@@ -30,12 +30,20 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         let newUser = PFUser()
         
+        
+        
         newUser.username = usernameField.text
         newUser.password = passwordField.text
-        newUser.email = emailField.text
-        newUser["profile_pic"] = nil
+//        newUser.email = emailField.text
+        
         newUser["followers"] = 0
         newUser["description"] = ""
+        // get the correct kind of data from a UI image to store for Parse
+        let image = #imageLiteral(resourceName: "profile_tab")
+        if let imageData = UIImagePNGRepresentation(image) {
+            let pic = PFFile(name: "image.png", data: imageData)
+            newUser["profile_pic"] = pic
+        }
         
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if let error = error {

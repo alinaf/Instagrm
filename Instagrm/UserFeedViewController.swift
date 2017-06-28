@@ -10,6 +10,9 @@ import UIKit
 
 class UserFeedViewController: UIViewController {
 
+    // outlets for the view
+    @IBOutlet weak var userFeed: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

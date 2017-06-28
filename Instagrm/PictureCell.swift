@@ -10,4 +10,6 @@ import UIKit
 
 class PictureCell: UICollectionViewCell {
     
+    // outlets for the collection cell
+    @IBOutlet weak var postImage: UIImageView!
 }

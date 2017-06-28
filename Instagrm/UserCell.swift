@@ -10,4 +10,8 @@ import UIKit
 
 class UserCell: UICollectionViewCell {
     
+    // outlets for the collection cell
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var followerLabel: UILabel!
 }

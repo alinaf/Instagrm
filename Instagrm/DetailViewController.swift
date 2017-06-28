@@ -19,6 +19,24 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // make sure that the post can be unwrapped, ie there is actually a post to display
+        if let post = post {
+            // set the caption for the post
+            let caption = post["caption"] as! String
+            self.postCaption.text = caption
+            
+            // set the post's image by converting from a PFFile to a UIImage
+            let image = post["image"] as! PFFile
+            image.getDataInBackground(block: { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    let postIm = UIImage(data: data!)
+                    self.postImage.image = postIm
+                }
+            })
+        }
 
         // Do any additional setup after loading the view.
     }

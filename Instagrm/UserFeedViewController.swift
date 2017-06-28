@@ -7,23 +7,74 @@
 //
 
 import UIKit
+import Parse
 
-class UserFeedViewController: UIViewController {
+class UserFeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // outlets for the view
     @IBOutlet weak var userFeed: UICollectionView!
     
+    // posts to load data from
+    var posts: [PFObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // assign delegate and data source of the collection view
+        userFeed.delegate = self
+        userFeed.dataSource = self
 
         // Do any additional setup after loading the view.
     }
 
+    func getPosts() {
+        let query = PFQuery()
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count+1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // dequeue cells for their use as cells within the collection view
+        let user = userFeed.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
+        let pic = userFeed.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as! PictureCell
+        
+        if indexPath.row == 0 {
+            // make the user cell first with its username and image
+            let profile = PFUser.current()
+            
+            let name = profile?.username
+            user.userLabel.text = name
+            
+            let propic = profile?["profile_pic"] as! PFFile
+            propic.getDataInBackground { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    if let data = data {
+                        let file = UIImage(data: data)
+                        user.profileImage.image = file
+                    } else {
+                        user.profileImage.image = #imageLiteral(resourceName: "profile_tab")
+                    }
+                }
+            }
+            
+            user.followerLabel.isHidden = true
+            return user
+        }
+        
+        
+        return pic
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

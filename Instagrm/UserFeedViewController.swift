@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class UserFeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class UserFeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // outlets for the view
     @IBOutlet weak var userFeed: UICollectionView!
@@ -17,14 +17,27 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     // posts to load data from
     var posts: [PFObject] = []
     
+    // make the standard size of the cells
+    var standard: CGSize = CGSize()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // assign delegate and data source of the collection view
         userFeed.delegate = self
         userFeed.dataSource = self
+        
+        // set the collection view flow layout so that posts present in grid
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        userFeed.collectionViewLayout = layout
 
+        // set the standard
+        standard = CGSize(width: (self.view.frame.size.width)/3, height: (self.view.frame.size.width)/3)
+        
         getPosts()
+        
     }
 
     func getPosts() {
@@ -91,6 +104,7 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
                 if let data = data {
                     let pict = UIImage(data: data)
                     pic.postImage.image = pict
+                    pic.postImage.sizeThatFits(self.standard)
                 } else {
                     pic.postImage.image = #imageLiteral(resourceName: "image_placeholder")
                 }
@@ -100,6 +114,17 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         return pic
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // only for the first cell, make it the width of the screen
+        if indexPath.row == 0 {
+            return CGSize(width: (self.view.frame.size.width), height: (self.view.frame.size.width)/3)
+        }
+        
+        // for all other cells, make sure it can be displayed in a grid.
+        return standard
+
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postCaption: UITextView!
@@ -19,6 +19,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        postCaption.delegate = self
         
         // setting the delegate for the image picker, and where to get images from
         vc.delegate = self
@@ -38,7 +40,13 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         // Do any additional setup after loading the view.
     }
-        
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if postCaption.text == "Add a caption..." {
+            postCaption.text = ""
+        }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // get the image captured from the camera
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage

@@ -13,6 +13,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     // Outlets for the view
     @IBOutlet weak var feedTable: UITableView!
+    @IBOutlet weak var postButton: UIBarButtonItem!
     
     // storage for posts in the feed
     var posts: [PFObject] = []
@@ -117,7 +118,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -180,16 +181,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // get the destination and cell to access their member variables/functions
-        let cell = sender as! UITableViewCell
-        let control = segue.destination as! DetailViewController
-        let index = feedTable.indexPath(for: cell)
-        
-        // get the correct post to give to the detail view
-        let post = self.posts[index!.row]
-        
-        // set the post in the detail view to whatever was selected
-        control.post = post
+        let from = sender as? UITableViewCell
+        if let cell = from {
+            // get the destination and cell to access their member variables/functions
+//            let cell = sender as! UITableViewCell
+            let control = segue.destination as! DetailViewController
+            let index = feedTable.indexPath(for: cell)
+            
+            // get the correct post to give to the detail view
+            let post = self.posts[index!.row]
+            
+            // set the post in the detail view to whatever was selected
+            control.post = post
+        }
         
     }
 

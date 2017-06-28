@@ -127,6 +127,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="feedTable" destination="m3c-Iy-5Pe" id="95q-F4-res"/>
+                        <outlet property="postButton" destination="Lfm-tT-gqT" id="Rqm-Nt-MyV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1f-ET-OY6" userLabel="First Responder" sceneMemberID="firstResponder"/>

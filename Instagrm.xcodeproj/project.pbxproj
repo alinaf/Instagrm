@@ -18,6 +18,11 @@
 		FAE9288F1F01BF5E00FD0933 /* InstagrmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9288E1F01BF5E00FD0933 /* InstagrmTests.swift */; };
 		FAE9289A1F01BF5E00FD0933 /* InstagrmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928991F01BF5E00FD0933 /* InstagrmUITests.swift */; };
 		FAE928A81F02FD4A00FD0933 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */; };
+		FAE928AA1F03066D00FD0933 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928A91F03066D00FD0933 /* FeedViewController.swift */; };
+		FAE928AC1F03082800FD0933 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928AB1F03082800FD0933 /* ImageCell.swift */; };
+		FAE928B21F030FB300FD0933 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B11F030FB300FD0933 /* PostViewController.swift */; };
+		FAE928B41F032AC100FD0933 /* UserSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */; };
+		FAE928B61F032B4A00FD0933 /* UserSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		FAE928991F01BF5E00FD0933 /* InstagrmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagrmUITests.swift; sourceTree = "<group>"; };
 		FAE9289B1F01BF5E00FD0933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FAE928A91F03066D00FD0933 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		FAE928AB1F03082800FD0933 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		FAE928B11F030FB300FD0933 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSectionHeader.xib; sourceTree = "<group>"; };
+		FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +152,11 @@
 				FAE928791F01BF5E00FD0933 /* AppDelegate.swift */,
 				FAE9287B1F01BF5E00FD0933 /* LoginViewController.swift */,
 				FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */,
+				FAE928AB1F03082800FD0933 /* ImageCell.swift */,
+				FAE928A91F03066D00FD0933 /* FeedViewController.swift */,
+				FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */,
+				FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */,
+				FAE928B11F030FB300FD0933 /* PostViewController.swift */,
 				FAE9287D1F01BF5E00FD0933 /* Main.storyboard */,
 				FAE928801F01BF5E00FD0933 /* Assets.xcassets */,
 				FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */,
@@ -290,6 +305,7 @@
 				FAE928841F01BF5E00FD0933 /* LaunchScreen.storyboard in Resources */,
 				FAE928811F01BF5E00FD0933 /* Assets.xcassets in Resources */,
 				FAE9287F1F01BF5E00FD0933 /* Main.storyboard in Resources */,
+				FAE928B41F032AC100FD0933 /* UserSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,8 +469,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE928A81F02FD4A00FD0933 /* SignUpViewController.swift in Sources */,
+				FAE928B61F032B4A00FD0933 /* UserSectionHeader.swift in Sources */,
 				FAE9287C1F01BF5E00FD0933 /* LoginViewController.swift in Sources */,
+				FAE928B21F030FB300FD0933 /* PostViewController.swift in Sources */,
+				FAE928AA1F03066D00FD0933 /* FeedViewController.swift in Sources */,
 				FAE9287A1F01BF5E00FD0933 /* AppDelegate.swift in Sources */,
+				FAE928AC1F03082800FD0933 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

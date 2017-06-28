@@ -113,6 +113,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        feedTable.deselectRow(at: indexPath, animated: true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }
@@ -210,7 +214,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let index = feedTable.indexPath(for: cell)
             
             // get the correct post to give to the detail view
-            let post = self.posts[index!.row]
+            let post = self.posts[index!.section]
             
             // set the post in the detail view to whatever was selected
             control.post = post

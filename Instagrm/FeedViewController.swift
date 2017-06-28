@@ -118,27 +118,48 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // make caption cell and image cell available to use
         let image = feedTable.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
+        let caption = feedTable.dequeueReusableCell(withIdentifier: "CaptionCell") as! CaptionCell
         
+        // check if the posts are empty before loading data into cells
         if !posts.isEmpty {
+            // get the correct post to display
             let post = posts[indexPath.section]
-            let load = post["image"] as! PFFile
-            load.getDataInBackground(block: { (data: Data?, error: Error?) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    let postPicture = UIImage(data: data!)
-                    print("successfully got data")
-                    image.postImage.image = postPicture
-                }
-            })
+
+            if indexPath.row == 0 {
+                // load the image cell for the section
+                let load = post["image"] as! PFFile
+                load.getDataInBackground(block: { (data: Data?, error: Error?) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        let postPicture = UIImage(data: data!)
+                        print("successfully got data")
+                        image.postImage.image = postPicture
+                    }
+                })
+                return image
+            } else if indexPath.row == 1 {
+                // load the caption cell for the section
+                let load = post["caption"] as! String
+                let likes = post["likes"] as! Int
+                let comments = post["commentCount"] as! Int
+                
+                caption.captionLabel.text = load
+                caption.commentsLabel.text = " \(comments) comments"
+                caption.likesLabel.text = "\(likes) likes"
+                
+                return caption
+            }
         }
         
-        return image
+        return caption
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

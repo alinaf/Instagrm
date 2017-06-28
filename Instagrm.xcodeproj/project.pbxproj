@@ -157,6 +157,7 @@
 				FAE9287B1F01BF5E00FD0933 /* LoginViewController.swift */,
 				FAE928A71F02FD4A00FD0933 /* SignUpViewController.swift */,
 				FAE928AB1F03082800FD0933 /* ImageCell.swift */,
+				FAE928B91F04550900FD0933 /* CaptionCell.swift */,
 				FAE928A91F03066D00FD0933 /* FeedViewController.swift */,
 				FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */,
 				FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */,
@@ -166,7 +167,6 @@
 				FAE928801F01BF5E00FD0933 /* Assets.xcassets */,
 				FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */,
 				FAE928851F01BF5E00FD0933 /* Info.plist */,
-				FAE928B91F04550900FD0933 /* CaptionCell.swift */,
 			);
 			path = Instagrm;
 			sourceTree = "<group>";

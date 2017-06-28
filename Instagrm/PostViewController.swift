@@ -11,6 +11,7 @@ import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
+    // outlets for the view
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postCaption: UITextView!
     

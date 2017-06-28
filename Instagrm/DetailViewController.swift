@@ -11,6 +11,7 @@ import Parse
 
 class DetailViewController: UIViewController {
 
+    // outlets for the view
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postCaption: UILabel!
     

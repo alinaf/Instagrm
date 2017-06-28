@@ -10,6 +10,7 @@ import UIKit
 
 class UserSectionHeader: UITableViewHeaderFooterView {
 
+    // outlets fro the section header
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var createdLabel: UILabel!

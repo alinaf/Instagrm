@@ -10,6 +10,7 @@ import UIKit
 
 class ImageCell: UITableViewCell {
 
+    // outlets for the table cell
     @IBOutlet weak var postImage: UIImageView!
     
     override func awakeFromNib() {

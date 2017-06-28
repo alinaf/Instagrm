@@ -18,6 +18,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // need an image picker controller in order to find an image to post
     let vc = UIImagePickerController()
     
+    // bool for saving post
+    var savingPost = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,27 +71,32 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func submitPost(_ sender: Any) {
-        // create a new object in the needed class
-        let post = PFObject(className: "Posts")
-        
-        // create the adjectives for the object
-        post["image"] = getPFFileFromImage(image: postImage.image)
-        post["caption"] = postCaption.text ?? ""
-        post["author"] = PFUser.current()
-        post["likes"] = 0
-        post["commentCount"] = 0
-        
-        // save the post to the database
-        post.saveInBackground { (success: Bool, error: Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("post save successfully")
-                // dismiss the post window after it has been uploaded to the server
-                self.dismiss(animated: true, completion: nil)
+        if !savingPost {
+            // change bool so that the post button is locked
+            savingPost = true
+            
+            // create a new object in the needed class
+            let post = PFObject(className: "Posts")
+            
+            // create the adjectives for the object
+            post["image"] = getPFFileFromImage(image: postImage.image)
+            post["caption"] = postCaption.text ?? ""
+            post["author"] = PFUser.current()
+            post["likes"] = 0
+            post["commentCount"] = 0
+            
+            // save the post to the database
+            post.saveInBackground { (success: Bool, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("post save successfully")
+                    self.savingPost = false
+                    // dismiss the post window after it has been uploaded to the server
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
-        
     }
     
     func getPFFileFromImage (image: UIImage?) ->PFFile? {

@@ -55,6 +55,7 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         let user = userFeed.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
         let pic = userFeed.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as! PictureCell
         
+        // only do this for the first cell in the collection view
         if indexPath.row == 0 {
             // make the user cell first with its username and image
             let profile = PFUser.current()
@@ -80,6 +81,21 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
             return user
         }
         
+        // for all of the other cells, do the following
+        let post = posts[indexPath.row - 1]
+        let image = post["image"] as! PFFile
+        image.getDataInBackground { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let data = data {
+                    let pict = UIImage(data: data)
+                    pic.postImage.image = pict
+                } else {
+                    pic.postImage.image = #imageLiteral(resourceName: "image_placeholder")
+                }
+            }
+        }
         
         return pic
     }

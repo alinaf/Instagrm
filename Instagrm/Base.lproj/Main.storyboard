@@ -323,7 +323,7 @@
         <scene sceneID="4Gi-Xa-VMh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0qO-Iy-yxL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed_tab" id="4hG-qq-Pws"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" selectedImage="feed_tab" id="4hG-qq-Pws"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oPL-6t-kbO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -354,7 +354,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jPK-8A-uMo">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jPK-8A-uMo">
                                     <size key="itemSize" width="320" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -362,7 +362,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserCell" id="Zut-WE-9f8" customClass="UserCell" customModule="Instagrm" customModuleProvider="target">
-                                        <rect key="frame" x="1" y="0.0" width="319" height="70"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="319" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="70"/>
@@ -396,7 +396,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureCell" id="4gy-Rx-01H" customClass="PictureCell" customModule="Instagrm" customModuleProvider="target">
-                                        <rect key="frame" x="115" y="80" width="90" height="90"/>
+                                        <rect key="frame" x="115" y="70" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -467,7 +467,7 @@
         <scene sceneID="L3Z-BV-eso">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="icm-3E-dyc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User Posts" selectedImage="profile_tab" id="xW0-6S-uHI"/>
+                    <tabBarItem key="tabBarItem" title="User Posts" image="profile_tab" selectedImage="profile_tab" id="xW0-6S-uHI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="akp-VK-cr8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

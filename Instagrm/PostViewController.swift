@@ -80,10 +80,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             // create the adjectives for the object
             post["image"] = getPFFileFromImage(image: postImage.image)
-            post["caption"] = postCaption.text ?? ""
             post["author"] = PFUser.current()
             post["likes"] = 0
             post["commentCount"] = 0
+            
+            // make sure the caption is not the stock text
+            if postCaption.text == "Add a caption..." {
+                post["caption"] = ""
+            } else {
+                post["caption"] = postCaption.text ?? ""
+            }
             
             // save the post to the database
             post.saveInBackground { (success: Bool, error: Error?) in

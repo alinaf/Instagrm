@@ -21,6 +21,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // bool for saving post
     var savingPost = false
     
+    // make an alert controller
+    let alertController = UIAlertController(title: "Title", message: nil, preferredStyle: .alert)
+    let chooseAlert = UIAlertController(title: "Choose an image", message: "Please choose a photo", preferredStyle:  .actionSheet)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +34,26 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         vc.delegate = self
         vc.allowsEditing = true
         
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            // act as if camera button has been pressed
+            self.takePhoto(self.chooseAlert)
+        }
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            // act as if photo library button has been pressed
+            self.selectPhoto(self.chooseAlert)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        // add the actions to the controller
+        chooseAlert.addAction(cameraAction)
+        chooseAlert.addAction(libraryAction)
+        chooseAlert.addAction(cancelAction)
+        
+        // present the controller to start with
+        present(chooseAlert, animated: true)
     }
     
     @IBAction func selectPhoto(_ sender: Any) {
@@ -45,17 +69,32 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("camera available for use")
             vc.sourceType = .camera
+            
+            // present the images that are to be picked from
+            self.present(vc, animated: true, completion: nil)
         } else {
             print("cannot access camera")
-            
-            // TODO: should display come kind of alert
-            
-            
             vc.sourceType = .photoLibrary
+
+            
+            let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                // present the images that are to be picked from
+                self.present(self.vc, animated: true, completion: nil)
+            })
+            
+            // add the action to the alert controller
+            alertController.addAction(OKAction)
+            
+            // change the message of the alert controller
+            alertController.title = "Camera Unavailable"
+            alertController.message = nil
+            
+            // present to alert controller so the user knows the issue
+            present(alertController, animated: true)
+            
         }
         
-        // present the images that are to be picked from
-        self.present(vc, animated: true, completion: nil)
+        
     }
     
     
@@ -93,28 +132,36 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let post = PFObject(className: "Posts")
             
             // create the adjectives for the object
-            post["image"] = getPFFileFromImage(image: postImage.image)
-            post["author"] = PFUser.current()
-            post["likes"] = 0
-            post["commentCount"] = 0
-            
-            // make sure the caption is not the stock text
-            if postCaption.text == "Add a caption..." {
-                post["caption"] = ""
-            } else {
-                post["caption"] = postCaption.text ?? ""
-            }
-            
-            // save the post to the database
-            post.saveInBackground { (success: Bool, error: Error?) in
-                if let error = error {
-                    print(error.localizedDescription)
+            if let pic = postImage.image {
+                post["image"] = getPFFileFromImage(image: pic)
+                post["author"] = PFUser.current()
+                post["likes"] = 0
+                post["commentCount"] = 0
+                
+                // make sure the caption is not the stock text
+                if postCaption.text == "Add a caption..." {
+                    post["caption"] = ""
                 } else {
-                    print("post save successfully")
-                    self.savingPost = false
-                    // dismiss the post window after it has been uploaded to the server
-                    self.dismiss(animated: true, completion: nil)
+                    post["caption"] = postCaption.text ?? ""
                 }
+                
+                // save the post to the database
+                post.saveInBackground { (success: Bool, error: Error?) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        print("post save successfully")
+                        self.savingPost = false
+                        // dismiss the post window after it has been uploaded to the server
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            } else {
+                // change the message of the alert controller
+                chooseAlert.title = "Need a Photo"
+                
+                // present the choice alert
+                present(chooseAlert, animated: true)
             }
         }
     }

@@ -28,6 +28,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     // initialze control for refreshing
     var refreshControl: UIRefreshControl!
     
+    override func viewWillAppear(_ animated: Bool) {
+        // whenever we come back to this view controller, reload the posts to get the most up-to-date
+        loadingData = true
+        getPosts()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,10 +51,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         feedTable.delegate = self
         feedTable.dataSource = self
 
-        //get the posts for the table
-        loadingData = true
-        getPosts()
-        
         // Do any additional setup after loading the view.
     }
     

@@ -24,6 +24,11 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     // initialize control for refreshing
     var refreshControl: UIRefreshControl!
     
+    override func viewWillAppear(_ animated: Bool) {
+        // whenever we come back to this view controller, reload the posts to get the most up-to-date
+        getPosts()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,10 +51,6 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         userLayout.itemSize = standard
         userLayout.headerReferenceSize = CGSize(width: (self.view.frame.size.width), height: (self.view.frame.size.width)/5)
         userFeed.collectionViewLayout = userLayout
-
-        
-        
-        getPosts()
         
     }
     

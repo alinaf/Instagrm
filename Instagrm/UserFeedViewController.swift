@@ -198,5 +198,20 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let from = sender as? UICollectionViewCell
+        if let cell = from {
+            let control = segue.destination as! DetailViewController
+            let index = userFeed.indexPath(for: cell)
+            
+            // get the correct post to give to the detail view
+            let post = self.posts[index!.row]
+            
+            // set the post in the detail view to whatever was selected
+            control.post = post
+        }
+        
+    }
 
 }

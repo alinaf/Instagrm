@@ -428,6 +428,7 @@
                                         <size key="customSize" width="56" height="77"/>
                                         <connections>
                                             <outlet property="postImage" destination="6bS-i6-8m7" id="yTb-rX-z2k"/>
+                                            <segue destination="svm-Ek-hTC" kind="show" id="YQq-4d-DnE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -535,6 +536,6 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lb8-JU-mOH"/>
+        <segue reference="YQq-4d-DnE"/>
     </inferredMetricsTieBreakers>
 </document>

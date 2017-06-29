@@ -57,7 +57,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Include the images which you have gotten from the camera in the post
-        postImage.image = originalImage
+        postImage.image = editedImage
         
         // Dismiss the UIImagePickerController
         dismiss(animated: true, completion: nil)

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
@@ -25,14 +26,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let alertController = UIAlertController(title: "Title", message: nil, preferredStyle: .alert)
     let chooseAlert = UIAlertController(title: "Choose an image", message: "Please choose a photo", preferredStyle:  .actionSheet)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        postCaption.delegate = self
-        
-        // setting the delegate for the image picker, and where to get images from
-        vc.delegate = self
-        vc.allowsEditing = true
+    override func viewWillAppear(_ animated: Bool) {
+        // deal with the initial alert
         
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             // act as if camera button has been pressed
@@ -48,9 +43,21 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
         // add the actions to the controller
-        chooseAlert.addAction(cameraAction)
-        chooseAlert.addAction(libraryAction)
-        chooseAlert.addAction(cancelAction)
+        if chooseAlert.actions == [] {
+            chooseAlert.addAction(cameraAction)
+            chooseAlert.addAction(libraryAction)
+            chooseAlert.addAction(cancelAction)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        postCaption.delegate = self
+        
+        // setting the delegate for the image picker, and where to get images from
+        vc.delegate = self
+        vc.allowsEditing = true
         
         // present the controller to start with
         present(chooseAlert, animated: true)
@@ -82,8 +89,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 self.present(self.vc, animated: true, completion: nil)
             })
             
-            // add the action to the alert controller
-            alertController.addAction(OKAction)
+            // add the action to the alert controller only if it does not already have actions
+            if alertController.actions == [] {
+                alertController.addAction(OKAction)
+            }
             
             // change the message of the alert controller
             alertController.title = "Camera Unavailable"
@@ -128,6 +137,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // change bool so that the post button is locked
             savingPost = true
             
+            // show that the post is being uploaded
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            
             // create a new object in the needed class
             let post = PFObject(className: "Posts")
             
@@ -152,13 +164,23 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     } else {
                         print("post save successfully")
                         self.savingPost = false
+                        
+                        // post has finished loading so dismiss progress HUD
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        
                         // dismiss the post window after it has been uploaded to the server
                         self.dismiss(animated: true, completion: nil)
                     }
                 }
             } else {
+                // we encountered a problem so we are not loading
+                MBProgressHUD.hide(for: self.view, animated: true)
+                
                 // change the message of the alert controller
                 chooseAlert.title = "Need a Photo"
+                
+                // make sure that we can save the post again once they do choose a photo
+                savingPost = false
                 
                 // present the choice alert
                 present(chooseAlert, animated: true)

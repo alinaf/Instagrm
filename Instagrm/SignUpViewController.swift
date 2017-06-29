@@ -16,10 +16,20 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    // create alert controllers
+    let alertController = UIAlertController(title: "Data Needed", message: "Please ensure all required fields are filled out", preferredStyle: .alert)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // make the action to dismiss the alert
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+        }
+        
+        // add the dismiss action to the alert
+        if alertController.actions == [] {
+            alertController.addAction(cancelAction)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,28 +40,40 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         let newUser = PFUser()
         
-        
-        
-        newUser.username = usernameField.text
-        newUser.password = passwordField.text
-//        newUser.email = emailField.text
-        
-        newUser["followers"] = 0
-        newUser["description"] = ""
-        // get the correct kind of data from a UI image to store for Parse
-        let image = #imageLiteral(resourceName: "profile_tab")
-        if let imageData = UIImagePNGRepresentation(image) {
-            let pic = PFFile(name: "image.png", data: imageData)
-            newUser["profile_pic"] = pic
-        }
-        
-        newUser.signUpInBackground { (success: Bool, error: Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("newUser created")
-                self.dismiss(animated: true, completion: nil)
+        if let username = usernameField.text, let password = passwordField.text {
+            
+            newUser.username = username
+            newUser.password = password
+            // let the email field be optional
+            if let email = emailField.text {
+                newUser.email = email
             }
+            
+            newUser["followers"] = 0
+            newUser["description"] = ""
+            // get the correct kind of data from a UI image to store for Parse
+            let image = #imageLiteral(resourceName: "profile_tab")
+            if let imageData = UIImagePNGRepresentation(image) {
+                let pic = PFFile(name: "image.png", data: imageData)
+                newUser["profile_pic"] = pic
+            }
+            
+            newUser.signUpInBackground { (success: Bool, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    
+                    self.alertController.title = "Error"
+                    self.alertController.message = error.localizedDescription
+                    
+                    self.present(self.alertController, animated: true)
+                } else {
+                    print("newUser created")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else {
+            // something has not been filled out
+            present(alertController, animated: true)
         }
     }
 

@@ -15,10 +15,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    let alertController = UIAlertController(title: "Data Needed", message: "Please ensure the username and password fields are filled", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // set up the alert controller
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+        }
+        
+        // only add the cancel action if the alert controller doesn't already have actions
+        if alertController.actions == [] {
+            alertController.addAction(cancelAction)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +44,11 @@ class LoginViewController: UIViewController {
                 // print out the errors with logging in
                 if let error = error {
                     print(error.localizedDescription)
+                    // present that error data to the user
+                    self.alertController.title = "Error"
+                    self.alertController.message = error.localizedDescription
+                    
+                    self.present(self.alertController, animated: true)
                 } else {
                     print("logged in")
                     self.performSegue(withIdentifier: "mainScreen", sender: sender)
@@ -41,6 +56,7 @@ class LoginViewController: UIViewController {
             }
         } else {
             // because we could not unwrap the fields, there is an error
+            present(alertController, animated: true)
         }
     }
 

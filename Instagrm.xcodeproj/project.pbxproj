@@ -28,6 +28,7 @@
 		FAE928BC1F0460C700FD0933 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BB1F0460C700FD0933 /* PictureCell.swift */; };
 		FAE928BE1F0460E100FD0933 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BD1F0460E100FD0933 /* UserCell.swift */; };
 		FAE928C01F04611900FD0933 /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */; };
+		FAE928C21F05BAE400FD0933 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928C11F05BAE400FD0933 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		FAE928BB1F0460C700FD0933 /* PictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		FAE928BD1F0460E100FD0933 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
+		FAE928C11F05BAE400FD0933 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				FAE928BB1F0460C700FD0933 /* PictureCell.swift */,
 				FAE928BD1F0460E100FD0933 /* UserCell.swift */,
 				FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */,
+				FAE928C11F05BAE400FD0933 /* SettingsViewController.swift */,
 				FAE9287D1F01BF5E00FD0933 /* Main.storyboard */,
 				FAE928801F01BF5E00FD0933 /* Assets.xcassets */,
 				FAE928821F01BF5E00FD0933 /* LaunchScreen.storyboard */,
@@ -493,6 +496,7 @@
 				FAE928AA1F03066D00FD0933 /* FeedViewController.swift in Sources */,
 				FAE9287A1F01BF5E00FD0933 /* AppDelegate.swift in Sources */,
 				FAE928AC1F03082800FD0933 /* ImageCell.swift in Sources */,
+				FAE928C21F05BAE400FD0933 /* SettingsViewController.swift in Sources */,
 				FAE928BE1F0460E100FD0933 /* UserCell.swift in Sources */,
 				FAE928B81F04470800FD0933 /* DetailViewController.swift in Sources */,
 			);

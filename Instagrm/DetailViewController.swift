@@ -14,6 +14,10 @@ class DetailViewController: UIViewController {
     // outlets for the view
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postCaption: UILabel!
+    @IBOutlet weak var postCreate: UILabel!
+    @IBOutlet weak var postComments: UILabel!
+    @IBOutlet weak var postLikes: UILabel!
+    
     
     var post: PFObject? = nil
 
@@ -25,6 +29,21 @@ class DetailViewController: UIViewController {
             // set the caption for the post
             let caption = post["caption"] as! String
             self.postCaption.text = caption
+            
+            // set the creation time for the post
+            let time = post.createdAt!
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            let create = formatter.string(from: time)
+            self.postCreate.text = create
+            
+            // set the likes for the post
+            let likes = post["likes"] as! Int
+            self.postLikes.text = "\(likes) Likes"
+            
+            // set the comments for the post
+            let comments = post["commentCount"] as! Int
+            self.postComments.text = "\(comments) Comments"
             
             // set the post's image by converting from a PFFile to a UIImage
             let image = post["image"] as! PFFile

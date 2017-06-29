@@ -30,20 +30,34 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         vc.delegate = self
         vc.allowsEditing = true
         
-        // checking if the camera is available for use on the device
+    }
+    
+    @IBAction func selectPhoto(_ sender: Any) {
+        // photo library has been selected to pick photo
+        vc.sourceType = .photoLibrary
+        
+        // present the images that are to be picked from
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        // check if the camera is available for use on the device
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("camera available for use")
             vc.sourceType = .camera
         } else {
             print("cannot access camera")
+            
+            // TODO: should display come kind of alert
+            
+            
             vc.sourceType = .photoLibrary
         }
         
         // present the images that are to be picked from
         self.present(vc, animated: true, completion: nil)
-
-        // Do any additional setup after loading the view.
     }
+    
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if postCaption.text == "Add a caption..." {

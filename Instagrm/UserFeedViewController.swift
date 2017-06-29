@@ -115,6 +115,18 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    @IBAction func logOut(_ sender: Any) {
+        // log out the user
+        PFUser.logOutInBackground { (error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("successfully logged out")
+                self.performSegue(withIdentifier: "logOut", sender: sender)
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // the number of posts to display
         return posts.count

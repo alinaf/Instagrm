@@ -21,8 +21,17 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     let userLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     var standard: CGSize = CGSize()
     
+    // initialize control for refreshing
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // enable refresh control for the table view
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(UserFeedViewController.didPullToRefresh(_:)), for: .valueChanged)
+        // display the refresh control's loading symbol
+        userFeed.insertSubview(refreshControl, at: 0)
         
         // assign delegate and data source of the collection view
         userFeed.delegate = self
@@ -43,6 +52,11 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         getPosts()
         
     }
+    
+    func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        // tried to refresh the feed, so get most recent posts
+        getPosts()
+    }
 
     func getPosts() {
         // make query to the database for a certain user. must be sorted by most recent and have a limit
@@ -56,6 +70,9 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
             if let objects = objects {
                 // set the posts for the collection
                 self.posts = objects
+                
+                // stop the refreshing indicator
+                self.refreshControl.endRefreshing()
                 
                 // reload the collection view
                 self.userFeed.reloadData()

@@ -24,6 +24,10 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     // initialize control for refreshing
     var refreshControl: UIRefreshControl!
     
+    // variables for loading more posts
+    var loadingData = false
+    var postCount = 1
+    
     override func viewWillAppear(_ animated: Bool) {
         // whenever we come back to this view controller, reload the posts to get the most up-to-date
         getPosts()
@@ -58,25 +62,46 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         // tried to refresh the feed, so get most recent posts
         getPosts()
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // do not want to be loading data already
+        if !loadingData {
+            // should set up the distance from the bottom where new data should start being loaded
+            let tableHeight = userFeed.contentSize.height
+            let scrollThreshold = tableHeight - userFeed.bounds.size.height
+            
+            // under the conditions, load more data for the user
+            if scrollView.contentOffset.y > 1.5*scrollThreshold, userFeed.isDragging {
+                loadingData = true
+                postCount += 1
+                getPosts()
+            }
+        }
+    }
 
     func getPosts() {
         // make query to the database for a certain user. must be sorted by most recent and have a limit
         let query = PFQuery(className: "Posts")
-        query.limit = 20
+        query.limit = 20*postCount
         query.order(byDescending: "_created_at")
         query.whereKey("author", equalTo: PFUser.current()!)
         
         // find the objects in the table
         query.findObjectsInBackground { (objects: [PFObject]?, error) in
             if let objects = objects {
-                // set the posts for the collection
-                self.posts = objects
-                
-                // stop the refreshing indicator
-                self.refreshControl.endRefreshing()
-                
-                // reload the collection view
-                self.userFeed.reloadData()
+                if self.posts != objects {
+                    // set the posts for the collection
+                    self.posts = objects
+                    
+                    // stop the refreshing indicator
+                    self.refreshControl.endRefreshing()
+                    
+                    // reload the collection view
+                    self.userFeed.reloadData()
+                    
+                    // no longer loading data
+                    self.loadingData = false
+                }
             }
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserCell: UICollectionViewCell {
+class UserCell: UICollectionReusableView {
     
     // outlets for the collection cell
     @IBOutlet weak var profileImage: UIImageView!

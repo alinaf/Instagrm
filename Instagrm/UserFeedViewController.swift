@@ -17,7 +17,8 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     // posts to load data from
     var posts: [PFObject] = []
     
-    // make the standard size of the cells
+    // make the standards for the layout
+    let userLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     var standard: CGSize = CGSize()
     
     override func viewDidLoad() {
@@ -27,14 +28,17 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         userFeed.delegate = self
         userFeed.dataSource = self
         
-        // set the collection view flow layout so that posts present in grid
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        userFeed.collectionViewLayout = layout
-
         // set the standard
         standard = CGSize(width: (self.view.frame.size.width)/3, height: (self.view.frame.size.width)/3)
+        
+        // set a custom collection view flow layout so that posts present in grid and a header appears
+        userLayout.minimumLineSpacing = 0
+        userLayout.minimumInteritemSpacing = 0
+        userLayout.itemSize = standard
+        userLayout.headerReferenceSize = CGSize(width: (self.view.frame.size.width), height: (self.view.frame.size.width)/5)
+        userFeed.collectionViewLayout = userLayout
+
+        
         
         getPosts()
         
@@ -60,42 +64,57 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count+1
+        // the number of posts to display
+        return posts.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // dequeue cells for their use as cells within the collection view
-        let user = userFeed.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
-        let pic = userFeed.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as! PictureCell
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        // only do this for the first cell in the collection view
-        if indexPath.row == 0 {
-            // make the user cell first with its username and image
-            let profile = PFUser.current()
+        // make the header available for use in the collection view
+        switch kind {
+        // for only the header
+        case UICollectionElementKindSectionHeader:
+            let header = userFeed.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
             
-            let name = profile?.username
-            user.userLabel.text = name
-            
-            let propic = profile?["profile_pic"] as? PFFile
-            propic?.getDataInBackground { (data, error) in
+            // set the header properties (username)
+            let user = PFUser.current()
+            let name = user?.username
+            header.userLabel.text = name
+            // profile picture
+            let profile = user?["profile_pic"] as? PFFile
+            profile?.getDataInBackground { (data, error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     if let data = data {
                         let file = UIImage(data: data)
-                        user.profileImage.image = file
+                        header.profileImage.image = file
                     } else {
-                        user.profileImage.image = #imageLiteral(resourceName: "profile_tab")
+                        header.profileImage.image = #imageLiteral(resourceName: "profile_tab")
                     }
                 }
             }
+            // followers not yet implemented so hide the label
+            header.followerLabel.isHidden = true
             
-            user.followerLabel.isHidden = true
-            return user
+            // give the header to the collection view to display
+            return header
+            
+        // the footer should not be called for so the program should pass an error
+        default:
+            assert(false, "Unexpected kind")
+            
         }
         
-        // for all of the other cells, do the following
-        let post = posts[indexPath.row - 1]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // dequeue cells for their use as cells within the collection view
+        let pic = userFeed.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as! PictureCell
+        
+        // for all the cells, do the following
+        let post = posts[indexPath.row]
+        // get and convert the image for the post
         let image = post["image"] as! PFFile
         image.getDataInBackground { (data, error) in
             if let error = error {
@@ -112,18 +131,6 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         return pic
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // only for the first cell, make it the width of the screen
-        if indexPath.row == 0 {
-            return CGSize(width: (self.view.frame.size.width), height: (self.view.frame.size.width)/3)
-        }
-        
-        // for all other cells, make sure it can be displayed in a grid.
-        return standard
-
     }
     
     override func didReceiveMemoryWarning() {

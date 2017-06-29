@@ -56,7 +56,8 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
         userLayout.minimumLineSpacing = 0
         userLayout.minimumInteritemSpacing = 0
         userLayout.itemSize = standard
-        userLayout.headerReferenceSize = CGSize(width: (self.view.frame.size.width), height: (self.view.frame.size.width)/5)
+        //CGFloat for height is from the current size of the image for the profile picture
+        userLayout.headerReferenceSize = CGSize(width: (self.view.frame.size.width), height: CGFloat(50))
         userFeed.collectionViewLayout = userLayout
         
     }

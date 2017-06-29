@@ -7,6 +7,7 @@ target 'Instagrm' do
 
   # Pods for Instagrm
     pod 'Parse'
+    pod 'MBProgressHUD'
 
   target 'InstagrmTests' do
     inherit! :search_paths

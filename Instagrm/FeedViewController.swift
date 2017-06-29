@@ -157,6 +157,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let comments = post["commentCount"] as! Int
                 
                 caption.captionLabel.text = load
+                caption.captionLabel.sizeToFit()
                 caption.commentsLabel.text = " \(comments) comments"
                 caption.likesLabel.text = "\(likes) likes"
                 
@@ -168,8 +169,27 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+                print("case0")
+            let height = self.view.frame.size.width
+            return height
+            
+        case 1:
+                print("case1")
+            let cell = feedTable.cellForRow(at: indexPath) as! CaptionCell
+            let height = cell.captionLabel.frame.height + cell.likesLabel.frame.height + 20
+            return height
+            
+        default:
+            assert(false, "should not have more than 2 rows")
+        }
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // make section headers
+        print(section)
         let post = posts[section]
         let user = post["author"] as! PFUser
         return user.objectId

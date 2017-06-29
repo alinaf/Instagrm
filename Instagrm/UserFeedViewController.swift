@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class UserFeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -30,6 +31,8 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         // whenever we come back to this view controller, reload the posts to get the most up-to-date
+        loadingData = true
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         getPosts()
     }
     
@@ -60,6 +63,8 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         // tried to refresh the feed, so get most recent posts
+        loadingData = true
+        postCount = 1
         getPosts()
     }
     
@@ -101,6 +106,9 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     // no longer loading data
                     self.loadingData = false
+                    
+                    // turn of the loading indicator when done
+                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
             }
         }

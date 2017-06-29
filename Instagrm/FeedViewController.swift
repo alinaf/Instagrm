@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -31,6 +32,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         // whenever we come back to this view controller, reload the posts to get the most up-to-date
         loadingData = true
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         getPosts()
     }
     
@@ -51,7 +53,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         feedTable.delegate = self
         feedTable.dataSource = self
 
-        // Do any additional setup after loading the view.
     }
     
     func didPullToRefresh (_ refreshControl: UIRefreshControl) {
@@ -82,6 +83,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 // we are no longer loading data so this bool can be reset
                 self.loadingData = false
+                
+                // if the loading indicator was on, should change that
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
     }

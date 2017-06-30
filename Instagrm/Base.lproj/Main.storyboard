@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,39 +24,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hm0-l0-TTN">
-                                <rect key="frame" x="48" y="107" width="223" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="instagradient " translatesAutoresizingMaskIntoConstraints="NO" id="q9z-H3-RVC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Joz-5l-lUH">
+                                <rect key="frame" x="36" y="322" width="248.5" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Joz-5l-lUH">
-                                <rect key="frame" x="48" y="167" width="223" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTp-GZ-ecq">
-                                <rect key="frame" x="137" y="237" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign In"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTp-GZ-ecq" userLabel="Sign In">
+                                <rect key="frame" x="120.5" y="372" width="79" height="55"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign In">
+                                            <attributes>
+                                                <font key="NSFont" size="36" name="SavoyeLetPlain"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mc9-C5-VUH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATa-dv-I8m">
-                                <rect key="frame" x="133" y="301" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign Up"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATa-dv-I8m" userLabel="Sign Up">
+                                <rect key="frame" x="119.5" y="443" width="81" height="55"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign Up">
+                                            <attributes>
+                                                <font key="NSFont" size="36" name="SavoyeLetPlain"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="signUpScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dGR-e6-Xyy"/>
                                     <segue destination="OIE-TW-4nV" kind="presentation" identifier="signUpScreen" id="0t4-Vo-a3q"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mms-gU-2ma">
+                                <rect key="frame" x="55" y="182" width="210" height="102"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Instagrm">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="85" name="SavoyeLetPlain"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hm0-l0-TTN">
+                                <rect key="frame" x="36" y="284" width="248.5" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hm0-l0-TTN" firstAttribute="centerX" secondItem="q9z-H3-RVC" secondAttribute="centerX" id="2Y6-UR-lhj"/>
+                            <constraint firstItem="Mms-gU-2ma" firstAttribute="bottom" secondItem="q9z-H3-RVC" secondAttribute="centerY" id="5x7-Nu-eUu"/>
+                            <constraint firstItem="Joz-5l-lUH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="67R-3V-JW3"/>
+                            <constraint firstAttribute="trailing" secondItem="q9z-H3-RVC" secondAttribute="trailing" id="EOr-H8-Hdh"/>
+                            <constraint firstItem="Mms-gU-2ma" firstAttribute="centerX" secondItem="q9z-H3-RVC" secondAttribute="centerX" id="F5z-ws-X1P"/>
+                            <constraint firstItem="WTp-GZ-ecq" firstAttribute="centerX" secondItem="q9z-H3-RVC" secondAttribute="centerX" id="Jpv-DB-Pud"/>
+                            <constraint firstItem="q9z-H3-RVC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LFn-bU-K4O"/>
+                            <constraint firstItem="hm0-l0-TTN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="LUJ-Fj-Tw0"/>
+                            <constraint firstItem="WTp-GZ-ecq" firstAttribute="top" secondItem="Joz-5l-lUH" secondAttribute="bottom" constant="20" id="Lcw-Qi-HxJ"/>
+                            <constraint firstItem="Joz-5l-lUH" firstAttribute="top" secondItem="hm0-l0-TTN" secondAttribute="bottom" constant="8" id="Wzq-5P-PVy"/>
+                            <constraint firstItem="ATa-dv-I8m" firstAttribute="centerX" secondItem="q9z-H3-RVC" secondAttribute="centerX" id="XkG-EY-9ad"/>
+                            <constraint firstItem="hm0-l0-TTN" firstAttribute="top" secondItem="q9z-H3-RVC" secondAttribute="centerY" id="Z8r-Mw-NTk"/>
+                            <constraint firstItem="Joz-5l-lUH" firstAttribute="centerX" secondItem="q9z-H3-RVC" secondAttribute="centerX" id="ad7-QW-XDZ"/>
+                            <constraint firstItem="q9z-H3-RVC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hcb-fP-qCD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ATa-dv-I8m" secondAttribute="bottom" constant="70" id="iuJ-Sa-LPv"/>
+                            <constraint firstAttribute="bottom" secondItem="q9z-H3-RVC" secondAttribute="bottom" id="lFT-9C-d46"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Joz-5l-lUH" secondAttribute="trailing" constant="20" id="sed-fD-fz8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hm0-l0-TTN" secondAttribute="trailing" constant="20" id="wYT-DT-n5G"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="Joz-5l-lUH" id="OUO-ng-9F9"/>
@@ -267,38 +319,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MYg-4m-Jag">
-                                <rect key="frame" x="49" y="137" width="223" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="instagradient " translatesAutoresizingMaskIntoConstraints="NO" id="Vnm-zI-Kg1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MYg-4m-Jag">
+                                <rect key="frame" x="36" y="284" width="248.5" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hO-Nz-bVH">
-                                <rect key="frame" x="49" y="184" width="223" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hO-Nz-bVH">
+                                <rect key="frame" x="36" y="322" width="248" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddV-TY-ssT">
-                                <rect key="frame" x="49" y="229" width="223" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ6-lc-ukN">
-                                <rect key="frame" x="133" y="316" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign Up"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZ6-lc-ukN">
+                                <rect key="frame" x="119.5" y="410" width="81" height="55"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign Up">
+                                            <attributes>
+                                                <font key="NSFont" size="36" name="SavoyeLetPlain"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="signUp:" destination="OIE-TW-4nV" eventType="touchUpInside" id="Jbh-EM-n8O"/>
                                     <action selector="signUpScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0z-hL-yeL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beh-FO-6Up">
+                                <rect key="frame" x="55" y="182" width="210" height="102"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Instagrm">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="85" name="SavoyeLetPlain"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddV-TY-ssT">
+                                <rect key="frame" x="36" y="360" width="248" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Vnm-zI-Kg1" secondAttribute="bottom" id="3Aw-5u-EJT"/>
+                            <constraint firstItem="QZ6-lc-ukN" firstAttribute="top" secondItem="ddV-TY-ssT" secondAttribute="bottom" constant="20" id="4xQ-AX-CW7"/>
+                            <constraint firstItem="Vnm-zI-Kg1" firstAttribute="top" secondItem="POU-DE-SmA" secondAttribute="top" id="5bW-6O-zhb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ddV-TY-ssT" secondAttribute="trailing" constant="20" id="8ZR-Ze-UG4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6hO-Nz-bVH" secondAttribute="trailing" constant="20" id="Iku-fV-gYq"/>
+                            <constraint firstItem="beh-FO-6Up" firstAttribute="bottom" secondItem="Vnm-zI-Kg1" secondAttribute="centerY" id="ItK-eV-oN4"/>
+                            <constraint firstItem="Vnm-zI-Kg1" firstAttribute="leading" secondItem="POU-DE-SmA" secondAttribute="leading" id="KMs-0C-5fW"/>
+                            <constraint firstItem="6hO-Nz-bVH" firstAttribute="leading" secondItem="POU-DE-SmA" secondAttribute="leadingMargin" constant="20" id="Mai-vR-C2z"/>
+                            <constraint firstItem="MYg-4m-Jag" firstAttribute="centerX" secondItem="beh-FO-6Up" secondAttribute="centerX" id="Mca-UT-h8q"/>
+                            <constraint firstItem="MYg-4m-Jag" firstAttribute="leading" secondItem="POU-DE-SmA" secondAttribute="leadingMargin" constant="20" id="XXL-RK-jTV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MYg-4m-Jag" secondAttribute="trailing" constant="20" id="ZvK-oJ-4ow"/>
+                            <constraint firstItem="6hO-Nz-bVH" firstAttribute="top" secondItem="MYg-4m-Jag" secondAttribute="bottom" constant="8" id="aCL-NT-4f0"/>
+                            <constraint firstItem="QZ6-lc-ukN" firstAttribute="centerX" secondItem="beh-FO-6Up" secondAttribute="centerX" id="gua-eR-187"/>
+                            <constraint firstItem="MYg-4m-Jag" firstAttribute="top" secondItem="Vnm-zI-Kg1" secondAttribute="centerY" id="hbq-Gd-ahI"/>
+                            <constraint firstItem="beh-FO-6Up" firstAttribute="centerX" secondItem="Vnm-zI-Kg1" secondAttribute="centerX" id="huc-gJ-79A"/>
+                            <constraint firstItem="ddV-TY-ssT" firstAttribute="leading" secondItem="POU-DE-SmA" secondAttribute="leadingMargin" constant="20" id="iGq-eC-vOZ"/>
+                            <constraint firstItem="6hO-Nz-bVH" firstAttribute="centerX" secondItem="beh-FO-6Up" secondAttribute="centerX" id="kwV-A4-Bhe"/>
+                            <constraint firstItem="ddV-TY-ssT" firstAttribute="centerX" secondItem="beh-FO-6Up" secondAttribute="centerX" id="nmc-Ne-TwD"/>
+                            <constraint firstAttribute="trailing" secondItem="Vnm-zI-Kg1" secondAttribute="trailing" id="qrQ-hm-dzT"/>
+                            <constraint firstItem="ddV-TY-ssT" firstAttribute="top" secondItem="6hO-Nz-bVH" secondAttribute="bottom" constant="8" id="yso-jT-zT5"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="ddV-TY-ssT" id="B8c-Zz-Enl"/>
@@ -673,6 +769,7 @@
     </scenes>
     <resources>
         <image name="feed_tab" width="25" height="25"/>
+        <image name="instagradient " width="529" height="705"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

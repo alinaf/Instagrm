@@ -197,10 +197,25 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        let now = Date()
 //        let interval = DateInterval(start: time!, end: now)
         
-        // get the user from the post and set the username and profile picture
+        // get the user from the post and set the username
         let user = post["author"] as! PFUser
         let username = user.username
         cell.userLabel.text = username
+        
+        // set the user profile picture
+        if let pic = user["profile_pic"] {
+            let file = pic as! PFFile
+            file.getDataInBackground(block: { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    if let data = data {
+                        let pic = UIImage(data: data)
+                        cell.profileImage.image = pic
+                    }
+                }
+            })
+        }
         
         return cell
     }

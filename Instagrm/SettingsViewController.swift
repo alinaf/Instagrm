@@ -101,6 +101,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         vc.delegate = self
         vc.allowsEditing = true
         
+        // create an object to recognize user touches
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.imageTapped(tapGestureRecognizer:)))
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(tapGestureRecognizer)

@@ -22,9 +22,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // bool for saving post
     var savingPost = false
     
-    // make an alert controller
+    // make an alert controller for unuseable camera and choosing an image
     let alertController = UIAlertController(title: "Title", message: nil, preferredStyle: .alert)
     let chooseAlert = UIAlertController(title: "Choose an image", message: "Please choose a photo", preferredStyle:  .actionSheet)
+    
+    // recognize a tap
+    let tapGestureRecognizer: UITapGestureRecognizer! = nil
     
     override func viewWillAppear(_ animated: Bool) {
         // deal with the initial alert
@@ -59,7 +62,17 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         vc.delegate = self
         vc.allowsEditing = true
         
+        // code to create an object to recognize user touches
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostViewController.imageTapped(tapGestureRecognizer:)))
+        postImage.isUserInteractionEnabled = true
+        postImage.addGestureRecognizer(tapGestureRecognizer)
+        
         // present the controller to start with
+        present(chooseAlert, animated: true)
+    }
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        // if the image is tapped, show the alert that allows to choose an image
         present(chooseAlert, animated: true)
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     // outlets for the view
     @IBOutlet weak var usernameField: UITextField!
@@ -30,6 +30,15 @@ class SignUpViewController: UIViewController {
         if alertController.actions == [] {
             alertController.addAction(cancelAction)
         }
+        
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
+        self.emailField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // outlets for the view
     @IBOutlet weak var usernameField: UITextField!
@@ -29,11 +29,19 @@ class LoginViewController: UIViewController {
             alertController.addAction(cancelAction)
         }
         
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     @IBAction func signIn(_ sender: Any) {

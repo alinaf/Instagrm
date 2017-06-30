@@ -103,7 +103,9 @@ class UserFeedViewController: UIViewController, UICollectionViewDelegate, UIColl
                     self.refreshControl.endRefreshing()
                     
                     // reload the collection view
-                    self.userFeed.reloadData()
+                    self.userFeed.reloadSections(IndexSet(integer:0))
+                    print("data reloaded")
+                    
                     
                     // no longer loading data
                     self.loadingData = false

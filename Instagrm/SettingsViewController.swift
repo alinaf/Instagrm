@@ -119,17 +119,13 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         memberLabel.text = "Member since: \n\(since)"
         
         // put in image
-        let profile = user?["profile_pic"] as? PFFile
-        profile?.getDataInBackground { (data, error) in
+        let profile = user!["profile_pic"] as! PFFile
+        profile.getDataInBackground { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                if let data = data {
-                    let file = UIImage(data: data)
-                    self.profileImage.image = file
-                } else {
-                    self.profileImage.image = #imageLiteral(resourceName: "profile_tab")
-                }
+                self.profileImage.image = UIImage(data: data!)
+                print(self.profileImage.image!)
             }
         }
     }
@@ -138,6 +134,27 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // if the image is tapped, show the alert that allows to choose an image
         present(chooseAlert, animated: true)
         
+        // coming back from image picker, need to update user file
+        let user = PFUser.current()
+        user?["profile_pic"] = getPFFileFromImage(image: profileImage.image)
+        
+        user?.saveInBackground(block: { (success, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("successfully added profile picture")
+            }
+        })
+    }
+    
+    func getPFFileFromImage (image: UIImage?) ->PFFile? {
+        // get the correct kind of data from a UI image to store for Parse
+        if let image = image {
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -146,7 +163,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Include the images which you have gotten from the camera in the post
-        profi.image = editedImage
+        profileImage.image = editedImage
         
         // Dismiss the UIImagePickerController
         dismiss(animated: true, completion: nil)

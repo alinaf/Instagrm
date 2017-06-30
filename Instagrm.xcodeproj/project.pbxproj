@@ -29,6 +29,8 @@
 		FAE928BE1F0460E100FD0933 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BD1F0460E100FD0933 /* UserCell.swift */; };
 		FAE928C01F04611900FD0933 /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */; };
 		FAE928C21F05BAE400FD0933 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928C11F05BAE400FD0933 /* SettingsViewController.swift */; };
+		FAE928C41F0716A000FD0933 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928C31F0716A000FD0933 /* NewsFeedViewController.swift */; };
+		FAE928C61F07178F00FD0933 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928C51F07178F00FD0933 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		FAE928BD1F0460E100FD0933 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		FAE928BF1F04611900FD0933 /* UserFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		FAE928C11F05BAE400FD0933 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FAE928C31F0716A000FD0933 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		FAE928C51F07178F00FD0933 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,8 @@
 				FAE928AB1F03082800FD0933 /* ImageCell.swift */,
 				FAE928B91F04550900FD0933 /* CaptionCell.swift */,
 				FAE928A91F03066D00FD0933 /* FeedViewController.swift */,
+				FAE928C31F0716A000FD0933 /* NewsFeedViewController.swift */,
+				FAE928C51F07178F00FD0933 /* PostCell.swift */,
 				FAE928B51F032B4A00FD0933 /* UserSectionHeader.swift */,
 				FAE928B31F032AC100FD0933 /* UserSectionHeader.xib */,
 				FAE928B11F030FB300FD0933 /* PostViewController.swift */,
@@ -499,6 +505,8 @@
 				FAE928C21F05BAE400FD0933 /* SettingsViewController.swift in Sources */,
 				FAE928BE1F0460E100FD0933 /* UserCell.swift in Sources */,
 				FAE928B81F04470800FD0933 /* DetailViewController.swift in Sources */,
+				FAE928C41F0716A000FD0933 /* NewsFeedViewController.swift in Sources */,
+				FAE928C61F07178F00FD0933 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

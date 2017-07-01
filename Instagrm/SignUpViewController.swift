@@ -19,6 +19,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // create alert controllers
     let alertController = UIAlertController(title: "Data Needed", message: "Please ensure all required fields are filled out", preferredStyle: .alert)
     
+    // whether keyboard is there
+    var keyboard = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,15 +46,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // when the keyboard appears, shift the view up
     func keyboardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y -= keyboardSize.height
+        if !keyboard {
+            keyboard = true
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
     
     // when the keyboard dissappears, shift the view up
     func keyboardWillHide(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y += keyboardSize.height
+        if keyboard {
+            keyboard = false
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.view.frame.origin.y += keyboardSize.height
+            }
         }
     }
     

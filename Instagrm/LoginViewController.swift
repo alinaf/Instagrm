@@ -15,7 +15,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    // make alert controller
     let alertController = UIAlertController(title: "Data Needed", message: "Please ensure the username and password fields are filled", preferredStyle: .alert)
+    
+    // whether keyboard is there
+    var keyboard = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +44,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // when the keyboard appears, shift the view up
     func keyboardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y -= keyboardSize.height
+        if !keyboard {
+            keyboard = true
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
     
     // when the keyboard dissapears, shift the view down
     func keyboardWillHide(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y += keyboardSize.height
+        if keyboard {
+            keyboard = false
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.view.frame.origin.y += keyboardSize.height
+            }
         }
     }
 

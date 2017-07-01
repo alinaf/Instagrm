@@ -31,11 +31,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             alertController.addAction(cancelAction)
         }
         
+        // configure text field delegates
         self.usernameField.delegate = self
         self.passwordField.delegate = self
         self.emailField.delegate = self
+        
+        // shift the view with the appearance of the keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(PostViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PostViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    // when the keyboard appears, shift the view up
+    func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+    }
+    
+    // when the keyboard dissappears, shift the view up
+    func keyboardWillHide(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y += keyboardSize.height
+        }
+    }
+    
+    // keyboard dissapears on return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

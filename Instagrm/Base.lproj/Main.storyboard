@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LcD-tL-32X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2888" y="1629"/>
+            <point key="canvasLocation" x="1937" y="1629"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Der-NZ-4e2">
@@ -544,7 +544,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="JkM-aE-r2j">
                             <connections>
-                                <segue destination="nL2-aA-qa3" kind="show" id="UIf-98-xBZ"/>
+                                <segue destination="7F5-GD-0Tm" kind="show" id="sAw-c1-NgR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -747,7 +747,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="gNn-Bc-PoZ">
                             <connections>
-                                <segue destination="nL2-aA-qa3" kind="show" id="2Qd-r9-An9"/>
+                                <segue destination="7F5-GD-0Tm" kind="show" id="OIr-ls-EqD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -876,26 +876,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8II-3S-Xff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1937" y="2425"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="uey-kO-2hK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nL2-aA-qa3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="D46-qM-kHq"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HOY-ZJ-yiZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7F5-GD-0Tm" kind="relationship" relationship="rootViewController" id="OF4-ab-F0K"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pIC-zC-GtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1937" y="1629"/>
+            <point key="canvasLocation" x="1937" y="2424"/>
         </scene>
     </scenes>
     <resources>
@@ -905,9 +886,9 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VNq-2h-wkQ"/>
         <segue reference="fdh-mV-zE1"/>
-        <segue reference="UIf-98-xBZ"/>
-        <segue reference="7ML-u4-ysp"/>
+        <segue reference="YQq-4d-DnE"/>
+        <segue reference="OIr-ls-EqD"/>
+        <segue reference="XAe-cE-Rog"/>
     </inferredMetricsTieBreakers>
 </document>

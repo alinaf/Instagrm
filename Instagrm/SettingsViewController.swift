@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -135,6 +136,9 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // if the image is tapped, show the alert that allows to choose an image
         present(chooseAlert, animated: true)
         
+        // let user know that things are happening
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         // coming back from image picker, need to update user file
         let user = PFUser.current()
         user?["profile_pic"] = getPFFileFromImage(image: profileImage.image)
@@ -144,6 +148,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
                 print(error.localizedDescription)
             } else {
                 print("successfully added profile picture")
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         })
     }

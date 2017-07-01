@@ -84,7 +84,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             newUser.password = password
             // let the email field be optional
             if let email = emailField.text {
-                newUser.email = email
+                if email != "" {
+                    newUser.email = email
+                }
             }
             
             newUser["followers"] = 0
@@ -106,6 +108,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.present(self.alertController, animated: true)
                 } else {
                     print("newUser created")
+                    self.view.endEditing(true)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

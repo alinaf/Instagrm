@@ -88,6 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.present(self.alertController, animated: true)
                 } else {
                     print("logged in")
+                    self.view.endEditing(true)
                     self.performSegue(withIdentifier: "mainScreen", sender: sender)
                 }
             }

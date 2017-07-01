@@ -155,7 +155,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="postImage" destination="vZt-yJ-tiM" id="qBQ-qR-tAo"/>
-                                            <segue destination="svm-Ek-hTC" kind="show" id="Lb8-JU-mOH"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CaptionCell" rowHeight="109" id="rVB-zt-dNE" customClass="CaptionCell" customModule="Instagrm" customModuleProvider="target">
@@ -205,7 +204,6 @@
                                             <outlet property="captionLabel" destination="1rv-JW-1m0" id="2Lt-8v-e4S"/>
                                             <outlet property="commentsLabel" destination="zZK-Gm-HC4" id="oMm-Vr-6B0"/>
                                             <outlet property="likesLabel" destination="24C-A2-OoU" id="eUA-eb-9OP"/>
-                                            <segue destination="svm-Ek-hTC" kind="show" id="zrH-GV-AWL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -225,19 +223,12 @@
                                 <rect key="frame" x="16" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOut" id="Vcl-jB-Bi9"/>
-                                </connections>
                             </button>
                             <connections>
                                 <action selector="logOut:" destination="4un-B9-iae" id="ObU-uJ-eiw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New Post" id="Lfm-tT-gqT">
-                            <connections>
-                                <segue destination="gNn-CC-5jS" kind="presentation" id="cYq-ri-3mC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New Post" id="Lfm-tT-gqT"/>
                     </navigationItem>
                     <connections>
                         <outlet property="feedTable" destination="m3c-Iy-5Pe" id="95q-F4-res"/>
@@ -246,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1f-ET-OY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="111"/>
+            <point key="canvasLocation" x="2889" y="32"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="WLd-Aw-VAq">
@@ -545,6 +536,11 @@
                                 <action selector="logOut:" destination="4un-B9-iae" id="0bg-Yx-ygi"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="JkM-aE-r2j">
+                            <connections>
+                                <segue destination="nL2-aA-qa3" kind="show" id="UIf-98-xBZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="feedTable" destination="Ko9-fd-HQF" id="iD6-rf-4gt"/>
@@ -730,9 +726,9 @@
                                 <action selector="logOut:" destination="4un-B9-iae" id="aif-CM-sSW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New Post" id="gNn-Bc-PoZ">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="gNn-Bc-PoZ">
                             <connections>
-                                <segue destination="gNn-CC-5jS" kind="presentation" id="TRz-3v-0F4"/>
+                                <segue destination="nL2-aA-qa3" kind="show" id="2Qd-r9-An9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -743,7 +739,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVZ-lO-Qaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025.625" y="1628.8732394366198"/>
+            <point key="canvasLocation" x="83" y="2425"/>
         </scene>
         <!--New Post-->
         <scene sceneID="xl1-4o-ABQ">
@@ -762,7 +758,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH6-zX-ZbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="83" y="2427"/>
+            <point key="canvasLocation" x="1071" y="1629"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bKr-ki-m6s">
@@ -837,9 +833,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="W7G-Nb-OZJ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="hTN-vC-uGI">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="hTN-vC-uGI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3qa-Jp-7g5">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
@@ -861,7 +857,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8II-3S-Xff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2310" y="2340"/>
+            <point key="canvasLocation" x="1937" y="2425"/>
         </scene>
         <!--Item-->
         <scene sceneID="uey-kO-2hK">
@@ -880,7 +876,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIC-zC-GtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="1596"/>
+            <point key="canvasLocation" x="1937" y="1629"/>
         </scene>
     </scenes>
     <resources>
@@ -890,9 +886,9 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VNq-2h-wkQ"/>
+        <segue reference="XAe-cE-Rog"/>
+        <segue reference="2Qd-r9-An9"/>
         <segue reference="fdh-mV-zE1"/>
-        <segue reference="CV2-cI-3Zl"/>
-        <segue reference="7ML-u4-ysp"/>
+        <segue reference="YQq-4d-DnE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -48,6 +48,12 @@ class NewsFeedViewController: UIViewController, UITableViewDelegate, UITableView
         feedTable.delegate = self
         feedTable.dataSource = self
         
+        // automatically resize cell heights to fit content
+        feedTable.rowHeight = UITableViewAutomaticDimension
+        feedTable.estimatedRowHeight = 500
+        
+        feedTable.separatorStyle = UITableViewCellSeparatorStyle.none
+        
     }
     
     func didPullToRefresh (_ refreshControl: UIRefreshControl) {
@@ -180,6 +186,7 @@ class NewsFeedViewController: UIViewController, UITableViewDelegate, UITableView
             let comments = post["commentCount"] as! Int
             
             cell.captionLabel.text = load
+            cell.captionLabel.sizeToFit()
             cell.commentsLabel.text = " \(comments) comments"
             cell.likesLabel.text = "\(likes) likes"
             

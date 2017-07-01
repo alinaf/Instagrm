@@ -308,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LcD-tL-32X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2889.375" y="821.83098591549299"/>
+            <point key="canvasLocation" x="2888" y="1629"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Der-NZ-4e2">
@@ -600,7 +600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9u-I4-ZcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="2426"/>
+            <point key="canvasLocation" x="1026" y="2424"/>
         </scene>
         <!--Feed-->
         <scene sceneID="4Gi-Xa-VMh">
@@ -758,7 +758,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH6-zX-ZbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="1629"/>
+            <point key="canvasLocation" x="1026" y="1629"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bKr-ki-m6s">
@@ -886,9 +886,9 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XAe-cE-Rog"/>
-        <segue reference="2Qd-r9-An9"/>
+        <segue reference="VNq-2h-wkQ"/>
         <segue reference="fdh-mV-zE1"/>
-        <segue reference="YQq-4d-DnE"/>
+        <segue reference="UIf-98-xBZ"/>
+        <segue reference="7ML-u4-ysp"/>
     </inferredMetricsTieBreakers>
 </document>

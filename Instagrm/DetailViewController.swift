@@ -23,7 +23,11 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         // make sure that the post can be unwrapped, ie there is actually a post to display
         if let post = post {
             // set the caption for the post
@@ -56,8 +60,6 @@ class DetailViewController: UIViewController {
                 }
             })
         }
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

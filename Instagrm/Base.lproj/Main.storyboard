@@ -579,46 +579,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="raI-Dy-aCk">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem style="plain" id="MgA-qk-Ese">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="p12-fb-JVz">
-                                            <rect key="frame" x="16" y="7" width="92" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Photo Library"/>
-                                            <connections>
-                                                <action selector="selectPhoto:" destination="QsU-qt-ehK" eventType="touchUpInside" id="LBd-IB-nyo"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="cbb-zu-Fsk">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yeV-2D-J9Z">
-                                            <rect key="frame" x="118" y="7" width="327" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Camera"/>
-                                            <connections>
-                                                <action selector="takePhoto:" destination="QsU-qt-ehK" eventType="touchUpInside" id="tht-VA-DHj"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Post" id="knp-Gc-F4s">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="JiK-57-0NB">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5os-lf-P7d">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelPost:" destination="QsU-qt-ehK" eventType="touchUpInside" id="ZZb-uI-OB4"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ggz-yx-2wg">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6uH-MS-YUC">
                                 <rect key="frame" x="271" y="7" width="33" height="30"/>
@@ -632,13 +596,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="postButton" destination="ggz-yx-2wg" id="Ep8-Es-ynj"/>
                         <outlet property="postCaption" destination="obl-mq-t8I" id="vxk-OK-YEE"/>
                         <outlet property="postImage" destination="3bZ-A3-SW3" id="uFz-gZ-WV2"/>
+                        <segue destination="Rcy-yi-Osy" kind="presentation" identifier="newPost" id="fdh-mV-zE1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9u-I4-ZcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2887.5" y="1628.8732394366198"/>
+            <point key="canvasLocation" x="1071" y="2426"/>
         </scene>
         <!--Feed-->
         <scene sceneID="4Gi-Xa-VMh">
@@ -779,10 +745,11 @@
             </objects>
             <point key="canvasLocation" x="1025.625" y="1628.8732394366198"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--New Post-->
         <scene sceneID="xl1-4o-ABQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gNn-CC-5jS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New Post" image="insta_camera_btn" selectedImage="insta_camera_btn" id="4Qx-gV-drw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rxz-3t-OiB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -795,7 +762,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH6-zX-ZbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1937" y="1629"/>
+            <point key="canvasLocation" x="83" y="2427"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bKr-ki-m6s">
@@ -809,8 +776,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="0qO-Iy-yxL" kind="relationship" relationship="viewControllers" id="INp-qh-VCc"/>
+                        <segue destination="gNn-CC-5jS" kind="relationship" relationship="viewControllers" id="CV2-cI-3Zl"/>
                         <segue destination="icm-3E-dyc" kind="relationship" relationship="viewControllers" id="oOF-CZ-5ho"/>
-                        <segue destination="nL2-aA-qa3" kind="relationship" relationship="viewControllers" id="1Kl-99-NKc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUm-9U-65Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -894,7 +861,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8II-3S-Xff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025.625" y="2403.1690140845071"/>
+            <point key="canvasLocation" x="2310" y="2340"/>
         </scene>
         <!--Item-->
         <scene sceneID="uey-kO-2hK">
@@ -913,17 +880,19 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIC-zC-GtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82.5" y="2404.2253521126759"/>
+            <point key="canvasLocation" x="1988" y="1596"/>
         </scene>
     </scenes>
     <resources>
         <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="instagradient " width="529" height="705"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VNq-2h-wkQ"/>
-        <segue reference="TRz-3v-0F4"/>
+        <segue reference="fdh-mV-zE1"/>
+        <segue reference="CV2-cI-3Zl"/>
         <segue reference="7ML-u4-ysp"/>
     </inferredMetricsTieBreakers>
 </document>

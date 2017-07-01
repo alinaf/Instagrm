@@ -11,6 +11,7 @@ import Parse
 import MBProgressHUD
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+    @IBOutlet weak var postButton: UIBarButtonItem!
 
     // outlets for the view
     @IBOutlet weak var postImage: UIImageView!
@@ -66,9 +67,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostViewController.imageTapped(tapGestureRecognizer:)))
         postImage.isUserInteractionEnabled = true
         postImage.addGestureRecognizer(tapGestureRecognizer)
-        
-        // present the controller to start with
-        present(chooseAlert, animated: true)
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -76,7 +74,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(chooseAlert, animated: true)
     }
     
-    @IBAction func selectPhoto(_ sender: Any) {
+    func selectPhoto(_ sender: Any) {
         // photo library has been selected to pick photo
         vc.sourceType = .photoLibrary
         
@@ -84,7 +82,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.present(vc, animated: true, completion: nil)
     }
     
-    @IBAction func takePhoto(_ sender: Any) {
+    func takePhoto(_ sender: Any) {
         // check if the camera is available for use on the device
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("camera available for use")
@@ -181,8 +179,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         // post has finished loading so dismiss progress HUD
                         MBProgressHUD.hide(for: self.view, animated: true)
                         
-                        // dismiss the post window after it has been uploaded to the server
-                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "newPost", sender: self.postButton)
                     }
                 }
             } else {
@@ -209,10 +206,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         return nil
-    }
-
-    @IBAction func cancelPost(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     /*

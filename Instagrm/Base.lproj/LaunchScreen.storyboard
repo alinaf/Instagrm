@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,9 +25,8 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="instagradient " translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-ca-iU7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-Ff-wG1">
-                                <rect key="frame" x="82" y="171" width="210" height="102"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-Ff-wG1">
+                                <rect key="frame" x="82" y="231.5" width="210" height="102"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Instagrm">
                                         <attributes>
@@ -40,8 +40,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="oNQ-Ff-wG1" firstAttribute="centerX" secondItem="eJJ-ca-iU7" secondAttribute="centerX" id="3eo-Cc-XX4"/>
                             <constraint firstAttribute="trailing" secondItem="eJJ-ca-iU7" secondAttribute="trailing" id="8Le-kb-tcO"/>
                             <constraint firstAttribute="bottom" secondItem="eJJ-ca-iU7" secondAttribute="bottom" id="Kzs-Yt-ThV"/>
+                            <constraint firstItem="oNQ-Ff-wG1" firstAttribute="bottom" secondItem="eJJ-ca-iU7" secondAttribute="centerY" id="gcC-wJ-07e"/>
                             <constraint firstItem="eJJ-ca-iU7" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kCb-8r-Fpl"/>
                             <constraint firstItem="eJJ-ca-iU7" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="lyu-qz-dwN"/>
                         </constraints>

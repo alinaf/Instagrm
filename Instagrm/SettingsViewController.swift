@@ -135,22 +135,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         // if the image is tapped, show the alert that allows to choose an image
         present(chooseAlert, animated: true)
-        
-        // let user know that things are happening
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        // coming back from image picker, need to update user file
-        let user = PFUser.current()
-        user?["profile_pic"] = getPFFileFromImage(image: profileImage.image)
-        
-        user?.saveInBackground(block: { (success, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("successfully added profile picture")
-                MBProgressHUD.hide(for: self.view, animated: true)
-            }
-        })
     }
     
     func getPFFileFromImage (image: UIImage?) ->PFFile? {
@@ -170,6 +154,22 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
         // Include the images which you have gotten from the camera in the post
         profileImage.image = editedImage
+        
+        // let user know that things are happening
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        // need to update user file
+        let user = PFUser.current()
+        user?["profile_pic"] = getPFFileFromImage(image: profileImage.image)
+        
+        user?.saveInBackground(block: { (success, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("successfully added profile picture")
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        })
         
         // Dismiss the UIImagePickerController
         dismiss(animated: true, completion: nil)

@@ -213,7 +213,7 @@ class NewsFeedViewController: UIViewController, UITableViewDelegate, UITableView
             let index = feedTable.indexPath(for: cell)
             
             // get the correct post to give to the detail view
-            let post = self.posts[index!.section]
+            let post = self.posts[index!.row]
             
             // set the post in the detail view to whatever was selected
             control.post = post
